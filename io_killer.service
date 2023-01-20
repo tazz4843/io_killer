@@ -1,0 +1,15 @@
+[Unit]
+Description=Load Average Monitor
+Before=basic.target
+After=local-fs.target sysinit.target
+DefaultDependencies=no
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/io_killer 16.0
+Restart=always
+RestartSec=1
+RestartForceExitStatus=1 2 3 4
+
+[Install]
+WantedBy=basic.target
